@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-hostname
+  namespace: dev
+spec:
+  selector:
+    matchLabels:
+      app: node-hostname
+  template:
+    metadata:
+      labels:
+        app: node-hostname
+    spec:
+      containers:
+      - name: node-hostname
+        image: node-hostname:20241205142857
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3000
