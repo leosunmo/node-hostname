@@ -21,7 +21,7 @@ docker-run: docker-stop docker-build-dev
 docker-stop:
 	docker kill $(shell docker ps -q --filter ancestor=$(DOCKER_IMAGE_NAME):dev)
 
-kind-up: check-kubectl check-kind kind-start kind-load-image kind-deploy
+kind-up: check-kubectl check-kind kind-start kind-deploy
 
 kind-start:
 	kind get clusters | grep -q $(KIND_CLUSTER_NAME) || kind create cluster --name $(KIND_CLUSTER_NAME) --config dev/kind/kind-config.yaml
@@ -40,7 +40,7 @@ docker-build-kube:
 kind-load-image: docker-build-kube
 	kind load docker-image $(DOCKER_IMAGE_NAME):$(DOCKER_TS_TAG) --name $(KIND_CLUSTER_NAME)
 
-kind-deploy:
+kind-deploy: kind-load-image
 	kubectl apply -f dev/kube
 	@echo "========================================"
 	@echo "Access Kind on the following IP address:"
