@@ -68,6 +68,7 @@ Run `gcloud auth application-default login` to authenticate with Google Cloud. T
 
 # TODOs
 ## Infrastructure
+- [ ] Set up proper DNS to load balancer.
 - [ ] Store Terraform code in a separate repository.
     - [ ] Use Terraform modules for reusable infrastructure components.
     - [ ] Use separate repositories for different environments, e.g. `terraform-prod`, `terraform-staging`, `terraform-dev`.
@@ -78,6 +79,7 @@ Run `gcloud auth application-default login` to authenticate with Google Cloud. T
 - [ ] Upgrade and use latest Google Terraform providers. The Google Terraform module examples use older versions.
 
 ## Kubernetes
+- [ ] Add CI for Helm Chart.
 - [ ] Use private clusters and probably not autopilot (issues with some observability tools) in production.
 - [ ] Store Kubernetes "system" manifests such as cert-manager and ingress controllers in a separate repository.
 - [ ] Use Helm for deploying node-hostname.
